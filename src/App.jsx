@@ -4,7 +4,7 @@ import './App.css';
 import MainNavBar from './pages/MainNavBar';
 import AdminNavBar from './admin/AdminNavBar';
 import ManagerNavBar from './manager/ManagerNavBar';
-import CustomerNavBar from './customer/CustomerNavBar';
+import CustomerNavbar from './customer/CustomerNavbar';
 
 function App() {
   const [isAdmin, setIsAdmin] = useState(false);
@@ -26,7 +26,7 @@ function App() {
      <BrowserRouter>
          {isAdmin && <AdminNavBar/>}
          {isManager && <ManagerNavBar/>}
-         {isCustomer && <CustomerNavBar/>}
+         {isCustomer && <CustomerNavbar/>}
          {!isAdmin && !isManager && !isCustomer && <MainNavBar/>}
      </BrowserRouter>
   );

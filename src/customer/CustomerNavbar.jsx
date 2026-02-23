@@ -6,7 +6,7 @@ import ViewEvents from './ViewEvents';
 import BookEvent from './BookEvent';
 import CustomerLogout from './CustomerLogout';
 
-export default function CustomerNavBar() {
+export default function CustomerNavbar() {
   const navigate = useNavigate();
 
   const handleLogout = () => {
