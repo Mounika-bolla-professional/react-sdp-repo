@@ -1,35 +1,36 @@
 import React, { useState, useEffect } from 'react';
-import './customer.css';
 
 export default function CustomerHome() {
-  const [customerData, setCustomerData] = useState(null);
+  const [customerName, setCustomerName] = useState('Customer');
+  const [customerUsername, setCustomerUsername] = useState('N/A');
+  const [customerEmail, setCustomerEmail] = useState('N/A');
 
   useEffect(() => {
-    const data = sessionStorage.getItem('customerData');
-    if (data) {
-      setCustomerData(JSON.parse(data));
-    }
+    // Read from sessionStorage
+    const name = sessionStorage.getItem('customerName');
+    const username = sessionStorage.getItem('customerUsername');
+    const email = sessionStorage.getItem('customerEmail');
+
+    if (name) setCustomerName(name);
+    if (username) setCustomerUsername(username);
+    if (email) setCustomerEmail(email);
   }, []);
 
   return (
-    <div className="customer-home-container">
-      <h2>Customer Home</h2>
-      {customerData ? (
-        <div className="customer-info-card">
-          <h3>Welcome, {customerData.fullName}!</h3>
-          <div className="customer-details">
-            <p><strong>Username:</strong> {customerData.username}</p>
-            <p><strong>Email:</strong> {customerData.email}</p>
-            <p><strong>Phone:</strong> {customerData.phone}</p>
-            <p><strong>Address:</strong> {customerData.address}</p>
-            <p><strong>City:</strong> {customerData.city}</p>
-            <p><strong>State:</strong> {customerData.state}</p>
-            <p><strong>Postal Code:</strong> {customerData.postalCode}</p>
-          </div>
-        </div>
-      ) : (
-        <p>Please log in to view your information.</p>
-      )}
+    <div style={{ padding: '20px' }}>
+      <h2>Welcome to Customer Dashboard</h2>
+      <div style={{
+        backgroundColor: '#f5f5f5',
+        padding: '20px',
+        borderRadius: '8px',
+        border: '1px solid #ddd',
+        marginBottom: '20px'
+      }}>
+        <h3>Profile Information</h3>
+        <p><strong>Name:</strong> {customerName}</p>
+        <p><strong>Username:</strong> {customerUsername}</p>
+        <p><strong>Email:</strong> {customerEmail}</p>
+      </div>
     </div>
   );
 }
